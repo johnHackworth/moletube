@@ -1,0 +1,84 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'pixi' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'pixi', null ]
+6 verbose cache add name=undefined spec="pixi" args=["pixi",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'pixi',
+7 verbose parsed url   path: 'pixi',
+7 verbose parsed url   href: 'pixi' }
+8 silly lockFile 5c60b56b-pixi pixi
+9 verbose lock pixi /home/javi/.npm/5c60b56b-pixi.lock
+10 silly lockFile 5c60b56b-pixi pixi
+11 silly lockFile 5c60b56b-pixi pixi
+12 verbose addNamed [ 'pixi', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile e2119d68-pixi pixi@
+15 verbose lock pixi@ /home/javi/.npm/e2119d68-pixi.lock
+16 silly addNameRange { name: 'pixi', range: '*', hasData: false }
+17 verbose url raw pixi
+18 verbose url resolving [ 'https://registry.npmjs.org/', './pixi' ]
+19 verbose url resolved https://registry.npmjs.org/pixi
+20 info trying registry request attempt 1 at 07:41:15
+21 http GET https://registry.npmjs.org/pixi
+22 http 200 https://registry.npmjs.org/pixi
+23 silly registry.get cb [ 200,
+23 silly registry.get   { date: 'Tue, 22 Apr 2014 05:41:17 GMT',
+23 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+23 silly registry.get     etag: '"6SO2M2FM9AMZ7TQJZM6OE57VK"',
+23 silly registry.get     'content-type': 'application/json',
+23 silly registry.get     via: '1.1 varnish',
+23 silly registry.get     'cache-control': 'max-age=1',
+23 silly registry.get     'content-length': '72239',
+23 silly registry.get     'accept-ranges': 'bytes',
+23 silly registry.get     age: '0',
+23 silly registry.get     'x-served-by': 'cache-v42-ASH, cache-lcy1131-LCY',
+23 silly registry.get     'x-cache': 'MISS, MISS',
+23 silly registry.get     'x-cache-hits': '0, 0',
+23 silly registry.get     'x-timer': 'S1398145276.921282530,VS0,VS122,VE275,VE478',
+23 silly registry.get     vary: 'Accept',
+23 silly registry.get     'keep-alive': 'timeout=10, max=50',
+23 silly registry.get     connection: 'Keep-Alive' } ]
+24 silly addNameRange number 2 { name: 'pixi', range: '*', hasData: true }
+25 silly addNameRange versions [ 'pixi',
+25 silly addNameRange   [ '0.0.1', '0.0.2', '0.1.0', '0.1.1', '0.1.2', '0.2.0', '0.2.1' ] ]
+26 verbose addNamed [ 'pixi', '0.2.1' ]
+27 verbose addNamed [ '0.2.1', '0.2.1' ]
+28 silly lockFile 403906a9-pixi-0-2-1 pixi@0.2.1
+29 verbose lock pixi@0.2.1 /home/javi/.npm/403906a9-pixi-0-2-1.lock
+30 silly lockFile 0c982ce2-ry-npmjs-org-pixi-pixi-0-2-1-tgz https://registry.npmjs.org/pixi/-/pixi-0.2.1.tgz
+31 verbose lock https://registry.npmjs.org/pixi/-/pixi-0.2.1.tgz /home/javi/.npm/0c982ce2-ry-npmjs-org-pixi-pixi-0-2-1-tgz.lock
+32 verbose addRemoteTarball [ 'https://registry.npmjs.org/pixi/-/pixi-0.2.1.tgz',
+32 verbose addRemoteTarball   '80d725325bf58434b4da2149870673574777cabc' ]
+33 silly lockFile 0c982ce2-ry-npmjs-org-pixi-pixi-0-2-1-tgz https://registry.npmjs.org/pixi/-/pixi-0.2.1.tgz
+34 silly lockFile 0c982ce2-ry-npmjs-org-pixi-pixi-0-2-1-tgz https://registry.npmjs.org/pixi/-/pixi-0.2.1.tgz
+35 silly lockFile 403906a9-pixi-0-2-1 pixi@0.2.1
+36 silly lockFile 403906a9-pixi-0-2-1 pixi@0.2.1
+37 silly lockFile e2119d68-pixi pixi@
+38 silly lockFile e2119d68-pixi pixi@
+39 error Error: EACCES, mkdir '/home/javi/tmp/npm-7684-K4TRK6u4'
+39 error  { [Error: EACCES, mkdir '/home/javi/tmp/npm-7684-K4TRK6u4']
+39 error   errno: 3,
+39 error   code: 'EACCES',
+39 error   path: '/home/javi/tmp/npm-7684-K4TRK6u4' }
+40 error Please try running this command again as root/Administrator.
+41 error System Linux 3.12.0-031200rc7-generic
+42 error command "/usr/bin/node" "/usr/bin/npm" "install" "pixi"
+43 error cwd /home/javi/non-work/pixiTests
+44 error node -v v0.10.26
+45 error npm -v 1.4.3
+46 error path /home/javi/tmp/npm-7684-K4TRK6u4
+47 error code EACCES
+48 error errno 3
+49 error stack Error: EACCES, mkdir '/home/javi/tmp/npm-7684-K4TRK6u4'
+50 verbose exit [ 3, true ]
