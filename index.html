@@ -18,11 +18,50 @@
             color: #FFFFFF;
 
         }
+        .loading {
+            font-size: 40px;
+            color: #FFFFFF;
+            font-family: verdana;
+            position: absolute;
+            top: 200px;
+            left: calc(50% - 100px);
+            -webkit-animation-name: spin;
+            -webkit-animation-duration: 4000ms;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+            -moz-animation-name: spin;
+            -moz-animation-duration: 4000ms;
+            -moz-animation-iteration-count: infinite;
+            -moz-animation-timing-function: linear;
+            -ms-animation-name: spin;
+            -ms-animation-duration: 4000ms;
+            -ms-animation-iteration-count: infinite;
+            -ms-animation-timing-function: linear;
+
+            animation-name: spin;
+            animation-duration: 4000ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+
+        }
+        @-moz-keyframes spin {
+            from { -moz-transform: rotate(0deg); }
+            to { -moz-transform: rotate(360deg); }
+        }
+        @-webkit-keyframes spin {
+            from { -webkit-transform: rotate(0deg); }
+            to { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes spin {
+            from {transform:rotate(0deg);}
+            to {transform:rotate(360deg);}
+        }
     </style>
     <script src="bower_components/pixi/bin/pixi.js"></script>
   </head>
   <body>
 
+    <div class="loading" id="loader"> LOADING </div>
 
     <script src="engine/eventable.js"></script>
     <script src="engine/extendable.js"></script>
@@ -45,7 +84,7 @@
     <script src="directors/cityDirector.js"></script>
 
     <div class="attribution">
-        made by <a href="http://twitter.com/johnhackworth">johnhackworth</a> for <a href="">Ludum Dare</a> <br/>
+        made by <a href="http://twitter.com/johnhackworth">johnhackworth</a> for <a href="http://www.ludumdare.com/compo/">Ludum Dare</a> <br/>
         if you like it, vote <a href="">here</a>
         or write me at <a href="mailto:redpandaredpanda@gmail.com">redpandaredpanda@gmail.com</a>
     </div>

@@ -156,6 +156,9 @@ window.moletube.currentStage = new pixEngine.Stage({
     this.metroButton.on('clicked', this.toggleMetro.bind(this));
     this.city.on('warning', this.showWarning.bind(this));
     this.title = new moletube.models.Title({stage: moletube.currentStage, profiled: moletube.currentStage.city.moles[0]})
+
+    document.getElementById('loader').remove();
+
   },
 
 })
