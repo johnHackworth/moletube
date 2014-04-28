@@ -1,26 +1,45 @@
 window.pixEngine = window.pixEngine || {};
 
 pixEngine.Stage = function(options) {
+  this.supportsWebGL = function() {
+    try {
+      var canvas = document.createElement( 'canvas' );
+      return !! window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) );
+    } catch( e ) {
+      return false;
+    }
+    return true;
+  }
   var self = this;
   pixEngine.utils.extend.call(this, pixEngine.utils.Eventable);
   this.pixiStage = new PIXI.Stage(0x67EBA1, true);
-  // let pixi choose WebGL or canvas
-  this.renderer = PIXI.autoDetectRenderer(
-    options.width,
-    options.height
-  );
-  this.assets = options.assets;
-  this.engine = new window.pixEngine.Engine({
-    renderer: this.renderer,
-    stage: this.pixiStage
-  });
 
-  this.mouse = new pixEngine.Mouse(options.width, options.height, this);
-  this.mouse.on('click', function(mousedata) {
-    self.engine.running = true;
-    self.trigger('click', mousedata)
-  })
-  this.initStage = options.init;
+  if(this.supportsWebGL()) {
+    this.renderer = new PIXI.WebGLRenderer(
+      options.width,
+      options.height,
+      null,
+      null,
+      true
+    );
+    this.assets = options.assets;
+    this.engine = new window.pixEngine.Engine({
+      renderer: this.renderer,
+      stage: this.pixiStage
+    });
+
+    this.mouse = new pixEngine.Mouse(options.width, options.height, this);
+    this.mouse.on('click', function(mousedata) {
+      self.engine.running = true;
+      self.trigger('click', mousedata)
+    })
+    this.initStage = options.init;
+  } else {
+    var loader = document.getElementById('loader');
+    loader.innerHTML = 'Your browser doesn\'t support webGL, sorry';
+    loader.setAttribute('class', 'warning');
+    this.init = function(){};
+  }
 }
 
 pixEngine.Stage.prototype.init = function() {
