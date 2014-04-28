@@ -1,0 +1,18 @@
+{
+  "name": "Moletube",
+  "main": "index.html",
+  "window": {
+    "title": "Moletube",
+    "icon": "assets/breakingMole.png",
+    "toolbar": false,
+    "frame": true,
+    "fullscreen": true,
+    "width": 1200,
+    "height": 600,
+    "position": "mouse",
+    "min_width": 1200,
+    "min_height": 600,
+    "max_width": 1200,
+    "max_height": 600
+  }
+}
