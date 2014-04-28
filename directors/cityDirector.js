@@ -64,7 +64,7 @@ window.moletube.currentStage = new pixEngine.Stage({
     this.cityVisible = true;
     this.city = new moletube.models.City({
       x: 600,
-      y: -85,
+      y: -50,
       stage: this
     })
     this.engine.addEntity(this.city);
