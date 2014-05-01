@@ -1,18 +1,23 @@
 {
   "name": "Moletube",
+  "version": 1,
   "main": "index.html",
   "window": {
     "title": "Moletube",
     "icon": "assets/breakingMole.png",
     "toolbar": false,
     "frame": true,
-    "fullscreen": true,
+    "fullscreen": false,
     "width": 1200,
-    "height": 600,
+    "height": 800,
     "position": "mouse",
     "min_width": 1200,
-    "min_height": 600,
+    "min_height": 800,
     "max_width": 1200,
-    "max_height": 600
+    "max_height": 800
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-node-webkit-builder": "^0.1.21"
   }
 }
