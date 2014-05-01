@@ -66,6 +66,19 @@ pixEngine.Stage.prototype.addNotVisualEntity = function(entity) {
   this.engine.addEntity(entity);
 }
 
+pixEngine.Stage.prototype.removeView = function(entity) {
+  this.pixiStage.removeChild(entity);
+}
+
+pixEngine.Stage.prototype.addViewAfter = function(entity, afterEntity) {
+  this.pixiStage.addChild(entity);
+  var i = this.pixiStage.children.indexOf(afterEntity);
+  if(i >= 0) {
+    var pixiEntity = this.pixiStage.children.pop();
+    this.pixiStage.children.splice(i+1, 0, pixiEntity);
+  }
+}
+
 pixEngine.Stage.prototype.resetPixiView = function(condition, value) {
   var removables = [];
   for(var i in this.pixiStage.children) {
