@@ -39,6 +39,11 @@ window.moletube.currentStage = new pixEngine.Stage({
       'assets/mole4_2.png',
       'assets/mole4_1b.png',
       'assets/mole4_2b.png',
+      'assets/mole5.png',
+      'assets/mole5_1.png',
+      'assets/mole5_2.png',
+      'assets/mole5_1b.png',
+      'assets/mole5_2b.png',
       'assets/metroButton.png',
       'assets/metroButtonHover.png',
       'assets/metroStation.png',
@@ -68,7 +73,7 @@ window.moletube.currentStage = new pixEngine.Stage({
     this.cityVisible = true;
     this.city = new moletube.models.City({
       x: 600,
-      y: -155,
+      y: -1000,
       stage: this
     })
     this.engine.addEntity(this.city);
@@ -159,7 +164,7 @@ window.moletube.currentStage = new pixEngine.Stage({
     }
     this.metroButton.on('clicked', this.toggleMetro.bind(this));
     this.city.on('warning', this.showWarning.bind(this));
-    this.title = new moletube.models.Title({stage: moletube.currentStage, profiled: moletube.currentStage.city.moles[0]})
+    this.title = new moletube.models.Title({stage: moletube.currentStage, profiled: moletube.currentStage.city.moles[0]});
 
     document.getElementById('loader').remove();
 
