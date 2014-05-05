@@ -1,6 +1,7 @@
 window.pixEngine = window.pixEngine || {};
 
 pixEngine.Stage = function(options) {
+  window.s = this;
   this.supportsWebGL = function() {
     try {
       var canvas = document.createElement( 'canvas' );
@@ -25,7 +26,7 @@ pixEngine.Stage = function(options) {
     this.assets = options.assets;
     this.engine = new window.pixEngine.Engine({
       renderer: this.renderer,
-      stage: this.pixiStage
+      stage: this
     });
 
     this.mouse = new pixEngine.Mouse(options.width, options.height, this);
@@ -34,6 +35,17 @@ pixEngine.Stage = function(options) {
       self.trigger('click', mousedata)
     })
     this.initStage = options.init;
+    // console.log(pixEngine.Viewport)
+    this.viewport = new pixEngine.Viewport({
+      maxX: options.maxX || options.width,
+      maxY: options.maxY || options.height,
+      minX: options.minX || 0,
+      minY: options.minY || 0,
+      width: options.width,
+      height: options.height,
+      x: Math.floor(options.width / 2),
+      y: Math.floor(options.height / 2),
+    })
   } else {
     var loader = document.getElementById('loader');
     loader.innerHTML = 'Your browser doesn\'t support webGL, sorry';
@@ -51,6 +63,10 @@ pixEngine.Stage.prototype.init = function() {
     self.engine.gameloop();
   }
   this.loader.load();
+}
+
+pixEngine.Stage.prototype.tick = function(counter) {
+  this.viewport.tick(counter);
 }
 
 pixEngine.Stage.prototype.addEntity = function(entity) {

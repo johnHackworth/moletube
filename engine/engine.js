@@ -8,13 +8,15 @@ pixEngine.Engine = function(options) {
 
 pixEngine.Engine.prototype.gameloop = function() {
   requestAnimFrame(this.gameloop.bind(this));
+
   if(this.running == true) {
     this.counter++;
+    this.stage.tick(this.counter);
     for(var i in this.entities) {
       this.entities[i].tick(this.counter);
     }
   }
-  this.renderer.render(this.stage);
+  this.renderer.render(this.stage.pixiStage);
 }
 
 pixEngine.Engine.prototype.addEntity = function(entity) {

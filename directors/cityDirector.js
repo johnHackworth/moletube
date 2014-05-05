@@ -1,19 +1,18 @@
 window.moletube = window.moletube || {};
 window.moletube.directors = window.moletube.directors || {};
-window.moletube.config = window.moletube.config || {};
-window.moletube.config.width = 1200;
-window.moletube.config.height = 600;
 
 window.moletube.currentStage = new pixEngine.Stage({
   width: window.moletube.config.width,
   height: window.moletube.config.height,
   assets: [
       'assets/logo.png',
+      'assets/tile.png',
       'assets/block.png',
       'assets/block2.png',
       'assets/block3.png',
       'assets/block4.png',
       'assets/block5.png',
+      'assets/block6.png',
       'assets/blueDot.png',
       'assets/happymole.png',
       'assets/mole1.png',
@@ -58,13 +57,18 @@ window.moletube.currentStage = new pixEngine.Stage({
       'assets/factory5.png',
       'assets/factory6.png',
       'assets/factory7.png',
-      'assets/factory8.png'
+      'assets/factory8.png',
+      'assets/parks1.png',
+      'assets/parks2.png',
+      'assets/parks3.png',
+      'assets/parks4.png',
+      'assets/stadium.png'
   ],
   init: function(stage) {
     this.cityVisible = true;
     this.city = new moletube.models.City({
       x: 600,
-      y: -15,
+      y: -155,
       stage: this
     })
     this.engine.addEntity(this.city);
