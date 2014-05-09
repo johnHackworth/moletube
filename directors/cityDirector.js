@@ -5,84 +5,87 @@ window.moletube.currentStage = new pixEngine.Stage({
   width: window.moletube.config.width,
   height: window.moletube.config.height,
   assets: [
-      'assets/logo.png',
-      'assets/tile.png',
-      'assets/block.png',
-      'assets/block2.png',
-      'assets/block3.png',
-      'assets/block4.png',
-      'assets/block5.png',
-      'assets/block6.png',
-      'assets/blueDot.png',
-      'assets/happymole.png',
-      'assets/mole1.png',
-      'assets/mole1big.png',
-      'assets/mole1_1.png',
-      'assets/mole1_2.png',
-      'assets/mole1_1b.png',
-      'assets/mole1_2b.png',
-      'assets/mole2.png',
-      'assets/mole2big.png',
-      'assets/mole2_1.png',
-      'assets/mole2_2.png',
-      'assets/mole2_1b.png',
-      'assets/mole2_2b.png',
-      'assets/mole3.png',
-      'assets/mole3big.png',
-      'assets/mole3_1.png',
-      'assets/mole3_2.png',
-      'assets/mole3_1b.png',
-      'assets/mole3_2b.png',
-      'assets/mole4.png',
-      'assets/mole4big.png',
-      'assets/mole4_1.png',
-      'assets/mole4_2.png',
-      'assets/mole4_1b.png',
-      'assets/mole4_2b.png',
-      'assets/mole5.png',
-      'assets/mole5_1.png',
-      'assets/mole5_2.png',
-      'assets/mole5_1b.png',
-      'assets/mole5_2b.png',
-      'assets/mole6.png',
-      'assets/mole6_1.png',
-      'assets/mole6_2.png',
-      'assets/mole6_1b.png',
-      'assets/mole6_2b.png',
-      'assets/mole7.png',
-      'assets/mole7_1.png',
-      'assets/mole7_2.png',
-      'assets/mole7_1b.png',
-      'assets/mole7_2b.png',
-      'assets/mole8.png',
-      'assets/mole8_1.png',
-      'assets/mole8_2.png',
-      'assets/mole8_1b.png',
-      'assets/mole8_2b.png',
-      'assets/metroButton.png',
-      'assets/metroButtonHover.png',
-      'assets/metroStation.png',
-      'assets/L1.png',
-      'assets/L1on.png',
-      'assets/L2.png',
-      'assets/L2on.png',
-      'assets/L3.png',
-      'assets/L3on.png',
-      'assets/L4.png',
-      'assets/L4on.png',
-      'assets/factory1.png',
-      'assets/factory2.png',
-      'assets/factory3.png',
-      'assets/factory4.png',
-      'assets/factory5.png',
-      'assets/factory6.png',
-      'assets/factory7.png',
-      'assets/factory8.png',
-      'assets/parks1.png',
-      'assets/parks2.png',
-      'assets/parks3.png',
-      'assets/parks4.png',
-      'assets/stadium.png'
+    'assets/logo.png',
+    'assets/tile.png',
+    'assets/birdie.png',
+    'assets/birdie1.png',
+    'assets/birdie2.png',
+    'assets/block.png',
+    'assets/block2.png',
+    'assets/block3.png',
+    'assets/block4.png',
+    'assets/block5.png',
+  'assets/block6.png',
+    'assets/blueDot.png',
+    'assets/happymole.png',
+    'assets/mole1.png',
+    'assets/mole1big.png',
+    'assets/mole1_1.png',
+    'assets/mole1_2.png',
+    'assets/mole1_1b.png',
+    'assets/mole1_2b.png',
+    'assets/mole2.png',
+    'assets/mole2big.png',
+    'assets/mole2_1.png',
+    'assets/mole2_2.png',
+    'assets/mole2_1b.png',
+    'assets/mole2_2b.png',
+    'assets/mole3.png',
+    'assets/mole3big.png',
+    'assets/mole3_1.png',
+    'assets/mole3_2.png',
+    'assets/mole3_1b.png',
+    'assets/mole3_2b.png',
+    'assets/mole4.png',
+    'assets/mole4big.png',
+    'assets/mole4_1.png',
+    'assets/mole4_2.png',
+    'assets/mole4_1b.png',
+    'assets/mole4_2b.png',
+    'assets/mole5.png',
+    'assets/mole5_1.png',
+    'assets/mole5_2.png',
+    'assets/mole5_1b.png',
+    'assets/mole5_2b.png',
+    'assets/mole6.png',
+    'assets/mole6_1.png',
+    'assets/mole6_2.png',
+    'assets/mole6_1b.png',
+    'assets/mole6_2b.png',
+    'assets/mole7.png',
+    'assets/mole7_1.png',
+    'assets/mole7_2.png',
+    'assets/mole7_1b.png',
+    'assets/mole7_2b.png',
+    'assets/mole8.png',
+    'assets/mole8_1.png',
+    'assets/mole8_2.png',
+    'assets/mole8_1b.png',
+    'assets/mole8_2b.png',
+    'assets/metroButton.png',
+    'assets/metroButtonHover.png',
+    'assets/metroStation.png',
+    'assets/L1.png',
+    'assets/L1on.png',
+    'assets/L2.png',
+    'assets/L2on.png',
+    'assets/L3.png',
+    'assets/L3on.png',
+    'assets/L4.png',
+    'assets/L4on.png',
+    'assets/factory1.png',
+    'assets/factory2.png',
+    'assets/factory3.png',
+    'assets/factory4.png',
+    'assets/factory5.png',
+    'assets/factory6.png',
+    'assets/factory7.png',
+    'assets/factory8.png',
+    'assets/parks1.png',
+    'assets/parks2.png',
+    'assets/parks3.png',
+    'assets/parks4.png',
+    'assets/stadium.png'
   ],
   init: function(stage) {
     this.cityVisible = true;
@@ -103,8 +106,8 @@ window.moletube.currentStage = new pixEngine.Stage({
 
     this.lineButtonSelected = function(lineButton) {
       this.city.unselectLine();
-      for(var i in this.lineButtons) {
-        if(lineButton != this.lineButtons[i]) {
+      for (var i in this.lineButtons) {
+        if (lineButton != this.lineButtons[i]) {
           this.lineButtons[i].deselect();
         }
       }
@@ -116,32 +119,32 @@ window.moletube.currentStage = new pixEngine.Stage({
     }
 
     this.showLineButtons = function(lineButton) {
-      for(var i in this.lineButtons) {
+      for (var i in this.lineButtons) {
         this.lineButtons[i].show();
       }
     }
 
     this.hideLineButtons = function(lineButton) {
-      for(var i in this.lineButtons) {
+      for (var i in this.lineButtons) {
         this.lineButtons[i].hide();
       }
     }
 
-    for(var i in this.city.lines) {
+    for (var i in this.city.lines) {
       this.lineButtons.push(new moletube.models.LineButton({
         line: this.city.lines[i].lineData.line,
         stage: this,
         color: this.city.lines[i].lineData.color
       }));
     };
-    for(var i in this.lineButtons) {
+    for (var i in this.lineButtons) {
       this.lineButtons[i].on('selected', this.lineButtonSelected.bind(this));
       this.lineButtons[i].on('unselected', this.lineButtonUnselected.bind(this));
     }
     this.hideLineButtons();
 
     this.toggleMetro = function() {
-      if(this.cityVisible) {
+      if (this.cityVisible) {
         this.showMetro();
       } else {
         this.hideMetro();
@@ -160,12 +163,15 @@ window.moletube.currentStage = new pixEngine.Stage({
 
     this.showWarning = function(text, time) {
       time = time || 2000;
-      if(this.warningText) {
+      if (this.warningText) {
         this.removeWarning();
       }
-      this.warningText = new PIXI.Text(text,
-        {font:"20px Verdana", fill:"#FF5555", strokeThickness: 3, stroke:"#000000"}
-      );
+      this.warningText = new PIXI.Text(text, {
+        font: "20px Verdana",
+        fill: "#FF5555",
+        strokeThickness: 3,
+        stroke: "#000000"
+      });
       this.warningText.viewType = "text"
       this.warningText.y = 10;
       this.warningText.x = 500;
@@ -179,7 +185,10 @@ window.moletube.currentStage = new pixEngine.Stage({
     }
     this.metroButton.on('clicked', this.toggleMetro.bind(this));
     this.city.on('warning', this.showWarning.bind(this));
-    this.title = new moletube.models.Title({stage: moletube.currentStage, profiled: moletube.currentStage.city.moles[0]});
+    this.title = new moletube.models.Title({
+      stage: moletube.currentStage,
+      profiled: moletube.currentStage.city.moles[0]
+    });
 
     document.getElementById('loader').remove();
 
