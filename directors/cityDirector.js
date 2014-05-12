@@ -15,7 +15,7 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/block3.png',
     'assets/block4.png',
     'assets/block5.png',
-  'assets/block6.png',
+    'assets/block6.png',
     'assets/blueDot.png',
     'assets/happymole.png',
     'assets/mole1.png',
@@ -85,7 +85,8 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/parks2.png',
     'assets/parks3.png',
     'assets/parks4.png',
-    'assets/stadium.png'
+    'assets/stadium.png',
+    'assets/farm.png'
   ],
   init: function(stage) {
     this.cityVisible = true;
@@ -93,7 +94,7 @@ window.moletube.currentStage = new pixEngine.Stage({
       x: 600,
       y: -1000,
       stage: this
-    })
+    });
     this.engine.addEntity(this.city);
     this.city.drawCity();
     this.metroButton = new moletube.models.MetroButton({
