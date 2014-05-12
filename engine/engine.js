@@ -1,36 +1,41 @@
 window.pixEngine = window.pixEngine || {};
 pixEngine.Engine = function(options) {
   this.counter = 0;
+  this.internalCounter = 0;
   this.entities = [];
   this.renderer = options.renderer;
   this.stage = options.stage
 }
 
+pixEngine.Engine.prototype.speed = 1;
+
 pixEngine.Engine.prototype.gameloop = function() {
   requestAnimFrame(this.gameloop.bind(this));
 
-  if(this.running == true) {
-    this.counter++;
-    this.stage.tick(this.counter);
-    for(var i in this.entities) {
-      this.entities[i].tick(this.counter);
+  if (this.running == true) {
+    this.internalCounter++;
+    if (this.internalCounter % this.speed === 0) {
+      this.counter++;
+      this.stage.tick(this.counter);
+      for (var i in this.entities) {
+        this.entities[i].tick(this.counter);
+      }
     }
   }
   this.renderer.render(this.stage.pixiStage);
 }
 
 pixEngine.Engine.prototype.addEntity = function(entity) {
-  if(this.searchEntity(entity) < 0) {
+  if (this.searchEntity(entity) < 0) {
     this.entities.push(entity)
   }
 }
 
 pixEngine.Engine.prototype.searchEntity = function(entity) {
-  for(var i in this.entities) {
-    if(this.entities[i] === entity) {
+  for (var i in this.entities) {
+    if (this.entities[i] === entity) {
       return i;
     }
   }
   return -1;
 }
-
