@@ -44,7 +44,7 @@ pixEngine.Stage = function(options) {
       width: options.width,
       height: options.height,
       x: Math.floor(options.width / 2),
-      y: Math.floor(options.height / 2),
+      y: Math.floor(options.height / 2)
     })
   } else {
     var loader = document.getElementById('loader');
@@ -58,6 +58,7 @@ pixEngine.Stage.prototype.init = function() {
   var self = this;
   document.body.appendChild(this.renderer.view);
   this.loader = new PIXI.AssetLoader(this.assets);
+  this.viewport.trackMouse();
   this.loader.onComplete = function() {
     self.initStage(self);
     self.engine.gameloop();

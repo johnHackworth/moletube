@@ -8,7 +8,8 @@ pixEngine.Viewport = function(options) {
   this.height = options.height;
   this.x = options.x || 0;
   this.y = options.y || 0;
-  this.target = [this.x, this.y]
+  this.mouseTrack = options.mouseTrack;
+  this.target = [this.x, this.y];
 }
 pixEngine.Viewport.prototype = {
   getX: function(x) {
@@ -63,5 +64,14 @@ pixEngine.Viewport.prototype = {
       }
       this.y += orientationY * difference;
     }
+  },
+  trackMouse: function() {
+    this.mouseTracker = new pixEngine.Mouse();
+    this.mouseTracker.on('clickAndMove', this.trackMouseMovement.bind(this));
+  },
+  trackMouseMovement: function(data) {
+    this.panAmount = 100;
+    this.target[0] += data.origX - data.x;
+    this.target[1] += data.origY - data.y;
   }
 }
