@@ -68,10 +68,19 @@ pixEngine.Viewport.prototype = {
   trackMouse: function() {
     this.mouseTracker = new pixEngine.Mouse();
     this.mouseTracker.on('clickAndMove', this.trackMouseMovement.bind(this));
+    this.mouseTracker.on('dblClick', this.panToMouse.bind(this));
   },
   trackMouseMovement: function(data) {
     this.panAmount = 100;
     this.target[0] += data.origX - data.x;
     this.target[1] += data.origY - data.y;
+  },
+  panToMouse: function(data) {
+    var centerX = Math.floor(this.width / 2);
+    var centerY = Math.floor(this.height / 2);
+    var panX = centerX - data.x;
+    var panY = centerY - data.y;
+
+    this.panTo(this.target[0] - panX, this.target[1] - panY, 5);
   }
 }

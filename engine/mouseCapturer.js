@@ -22,6 +22,8 @@ window.pixEngine = window.pixEngine || {};
       type = 'canvas';
       this.element = container;
     }
+    this.element.lastClick = new Date();
+
     var prefix = function(event) {
       if(eventPrefix) {
         return eventPrefix + event.charAt(0).toUpperCase() + event.slice(1);
@@ -31,6 +33,11 @@ window.pixEngine = window.pixEngine || {};
     }
     this.element['click'] = function(mousedata)  {
       self.trigger('click', mousedata);
+      var now = new Date();
+      if(now - self.lastClick < 300) {
+        self.trigger('dblClick', mousedata);
+      }
+      self.lastClick = now;
     }
     if(type === 'canvas') {
       this.element.addEventListener('click', this.element.click);

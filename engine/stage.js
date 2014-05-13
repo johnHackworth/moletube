@@ -13,7 +13,8 @@ pixEngine.Stage = function(options) {
   }
   var self = this;
   pixEngine.utils.extend.call(this, pixEngine.utils.Eventable);
-  this.pixiStage = new PIXI.Stage(0x67EBA1, true);
+  // this.pixiStage = new PIXI.Stage(0x67EBA1, true);
+  this.pixiStage = new PIXI.Stage(0x444444, true);
 
   if (this.supportsWebGL()) {
     this.renderer = new PIXI.WebGLRenderer(
