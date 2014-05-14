@@ -86,13 +86,16 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/parks3.png',
     'assets/parks4.png',
     'assets/stadium.png',
-    'assets/farm.png'
+    'assets/farm.png',
+    'assets/kaiju1.png',
+    'assets/kaiju1_1.png',
+    'assets/kaiju1_2.png',
   ],
   init: function(stage) {
     this.cityVisible = true;
     this.city = new moletube.models.City({
       x: 600,
-      y: -1000,
+      y: moletube.config.height / 2,
       stage: this
     });
     this.engine.addEntity(this.city);
