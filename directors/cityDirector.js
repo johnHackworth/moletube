@@ -17,6 +17,7 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/block5.png',
     'assets/block6.png',
     'assets/blueDot.png',
+    'assets/yellowFlag.png',
     'assets/happymole.png',
     'assets/mole1.png',
     'assets/mole1big.png',
@@ -217,7 +218,7 @@ window.moletube.currentStage = new pixEngine.Stage({
       this.warningText.viewType = "text"
       this.warningText.y = 10;
       this.warningText.x = 500;
-      this.addInvisibleEntity(this.warningText);
+      this.addVisualEntity(this.warningText);
       this.warningText.interval = setTimeout(this.removeWarning.bind(this), time);
     }
     this.removeWarning = function() {

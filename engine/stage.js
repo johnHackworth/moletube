@@ -76,7 +76,7 @@ pixEngine.Stage.prototype.addEntity = function(entity) {
   this.engine.addEntity(entity);
 }
 
-pixEngine.Stage.prototype.addInvisibleEntity = function(entity) {
+pixEngine.Stage.prototype.addVisualEntity = function(entity) {
   this.pixiStage.addChild(entity);
 }
 
