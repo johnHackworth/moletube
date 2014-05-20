@@ -10,6 +10,12 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/birdie.png',
     'assets/birdie1.png',
     'assets/birdie2.png',
+    'assets/birdie-2.png',
+    'assets/birdie1-2.png',
+    'assets/birdie2-2.png',
+    'assets/birdie-3.png',
+    'assets/birdie1-3.png',
+    'assets/birdie2-3.png',
     'assets/block.png',
     'assets/block2.png',
     'assets/block3.png',
@@ -129,6 +135,9 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/tiles/beach0000-0011.png',
     'assets/tiles/beach0000-1001.png',
     'assets/tiles/factoryFloor.png',
+    'assets/thougths/fun.png',
+    'assets/thougths/work.png',
+    'assets/thougths/home.png',
   ],
   init: function(stage) {
     this.cityVisible = true;
