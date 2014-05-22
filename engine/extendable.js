@@ -1,8 +1,8 @@
 window.pixEngine = window.pixEngine || {};
 window.pixEngine.utils = window.pixEngine.utils || {};
 
-window.pixEngine.utils.extend = function(object, keepExisting) {
-  object.call(this);
+window.pixEngine.utils.extend = function(object, keepExisting, options) {
+
   for (var n in object.prototype) {
     if (!keepExisting) {
       this[n] = object.prototype[n];
@@ -10,4 +10,5 @@ window.pixEngine.utils.extend = function(object, keepExisting) {
       this[n] = object.prototype[n];
     }
   }
+  object.call(this, options);
 };
