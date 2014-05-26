@@ -26,7 +26,7 @@
    */
   var PIXI = PIXI || {};
 
-  /* 
+  /*
    *
    * This file contains a lot of pixi consts which are used across the rendering engine
    * @class Consts
@@ -65,7 +65,7 @@
     NEAREST: 1
   };
 
-  // interaction frequency 
+  // interaction frequency
   PIXI.INTERACTION_FREQUENCY = 30;
   PIXI.AUTO_PREVENT_DEFAULT = true;
 
@@ -1816,7 +1816,7 @@ Object.defineProperty(PIXI.DisplayObjectContainer.prototype, 'height', {
     }
 
 
-    //TODO check culling  
+    //TODO check culling
   };
 
   /**
@@ -1964,14 +1964,14 @@ Object.defineProperty(PIXI.DisplayObjectContainer.prototype, 'height', {
    */
 
   /**
- * The SpriteBatch class is a really fast version of the DisplayObjectContainer 
+ * The SpriteBatch class is a really fast version of the DisplayObjectContainer
  * built solely for speed, so use when you need a lot of sprites or particles.
- * And it's extremely easy to use : 
+ * And it's extremely easy to use :
 
     var container = new PIXI.SpriteBatch();
- 
+
     stage.addChild(container);
- 
+
     for(var i  = 0; i < 100; i++)
     {
         var sprite = new PIXI.Sprite.fromImage("myImage.png");
@@ -3803,7 +3803,7 @@ PIXI.packColorRGBA = function(r, g, b, a)//r, g, b, a)
    // var g = (i / 4096.0)%64 / 64;
   //  var b = (i / 64.0)%64 / 64;
   //  var a = (i)%64 / 64;
-     
+
   //  console.log(r, g, b, a);
   //  return i;
 
@@ -4171,7 +4171,7 @@ PIXI.unpackColorRGB = function(r, g, b)//r, g, b, a)
    */
 
   // TODO Alvin and Mat
-  // Should we eventually create a Utils class ? 
+  // Should we eventually create a Utils class ?
   // Or just move this file to the pixi.js file ?
   PIXI.initDefaultShaders = function() {
 
@@ -7199,7 +7199,7 @@ PIXI.unpackColorRGB = function(r, g, b)//r, g, b, a)
     // bind the buffer
     gl.bindFramebuffer(gl.FRAMEBUFFER, buffer);
 
-    // set the blend mode! 
+    // set the blend mode!
     //gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
 
     // set texture
@@ -11805,7 +11805,7 @@ PIXI.unpackColorRGB = function(r, g, b)//r, g, b, a)
     // update the textures!
     PIXI.WebGLRenderer.updateTextures();
 
-    // 
+    //
     this.renderer.renderDisplayObject(displayObject, this.projection, this.textureBuffer.frameBuffer);
 
     displayObject.worldTransform = originalWorldTransform;

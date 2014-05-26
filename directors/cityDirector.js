@@ -143,6 +143,7 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/thoughts/home.png',
   ],
   init: function(stage) {
+    var self = this;
     this.cityVisible = true;
     this.world = new moletube.models.World({
       stage: this
@@ -165,42 +166,39 @@ window.moletube.currentStage = new pixEngine.Stage({
     this.lineButtons = [];
 
     this.showLateralMenu = function() {
-      if (this.lateralMenu) {
-        this.lateralMenu.destroy();
+      if (self.lateralMenu) {
+        self.lateralMenu.destroy();
       }
-      this.lateralMenu = new moletube.models.LateralMenu({
+      self.resaltTiles = true;
+      self.lateralMenu = new moletube.models.LateralMenu({
         stage: this
       });
     };
 
     this.lineButtonSelected = function(lineButton) {
-      this.city.unselectLine();
-      for (var i in this.lineButtons) {
-        if (lineButton != this.lineButtons[i]) {
-          this.lineButtons[i].deselect();
+      self.city.unselectLine();
+      for (var i in self.lineButtons) {
+        if (lineButton != self.lineButtons[i]) {
+          self.lineButtons[i].deselect();
         }
       }
-      this.city.selectLine(lineButton);
+      self.city.selectLine(lineButton);
     };
 
     this.lineButtonUnselected = function() {
-      this.city.unselectLine();
+      self.city.unselectLine();
     };
 
     this.showLineButtons = function(lineButton) {
-      for (var i in this.lineButtons) {
-        this.lineButtons[i].show();
-      }
+
     };
 
     this.hideLineButtons = function(lineButton) {
-      for (var i in this.lineButtons) {
-        this.lineButtons[i].hide();
-      }
+
     };
 
-    for (var i in this.city.lines) {
-      this.lineButtons.push(new moletube.models.LineButton({
+    for (var i in self.city.lines) {
+      self.lineButtons.push(new moletube.models.LineButton({
         line: this.city.lines[i].lineData.line,
         stage: this,
         color: this.city.lines[i].lineData.color
@@ -214,11 +212,11 @@ window.moletube.currentStage = new pixEngine.Stage({
 
     this.toggleMetro = function() {
       this.showLateralMenu();
-      if (this.cityVisible) {
-        this.showMetro();
-      } else {
-        this.hideMetro();
-      }
+      // if (this.cityVisible) {
+      //   this.showMetro();
+      // } else {
+      //   this.hideMetro();
+      // }
     };
 
     this.showMetro = function() {
