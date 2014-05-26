@@ -22,6 +22,7 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/block4.png',
     'assets/block5.png',
     'assets/block6.png',
+    'assets/richHouse1.png',
     'assets/blueDot.png',
     'assets/yellowFlag.png',
     'assets/happymole.png',
@@ -143,10 +144,15 @@ window.moletube.currentStage = new pixEngine.Stage({
   ],
   init: function(stage) {
     this.cityVisible = true;
+    this.world = new moletube.models.World({
+      stage: this
+    });
+    this.engine.addEntity(this.world);
     this.city = new moletube.models.City({
       x: 600,
       y: moletube.config.height / 2,
-      stage: this
+      stage: this,
+      world: this.world
     });
     this.engine.addEntity(this.city);
     this.city.drawCity();
@@ -158,6 +164,15 @@ window.moletube.currentStage = new pixEngine.Stage({
 
     this.lineButtons = [];
 
+    this.showLateralMenu = function() {
+      if (this.lateralMenu) {
+        this.lateralMenu.destroy();
+      }
+      this.lateralMenu = new moletube.models.LateralMenu({
+        stage: this
+      });
+    };
+
     this.lineButtonSelected = function(lineButton) {
       this.city.unselectLine();
       for (var i in this.lineButtons) {
@@ -166,23 +181,23 @@ window.moletube.currentStage = new pixEngine.Stage({
         }
       }
       this.city.selectLine(lineButton);
-    }
+    };
 
     this.lineButtonUnselected = function() {
       this.city.unselectLine();
-    }
+    };
 
     this.showLineButtons = function(lineButton) {
       for (var i in this.lineButtons) {
         this.lineButtons[i].show();
       }
-    }
+    };
 
     this.hideLineButtons = function(lineButton) {
       for (var i in this.lineButtons) {
         this.lineButtons[i].hide();
       }
-    }
+    };
 
     for (var i in this.city.lines) {
       this.lineButtons.push(new moletube.models.LineButton({
@@ -190,30 +205,33 @@ window.moletube.currentStage = new pixEngine.Stage({
         stage: this,
         color: this.city.lines[i].lineData.color
       }));
-    };
-    for (var i in this.lineButtons) {
+    }
+    for (i in this.lineButtons) {
       this.lineButtons[i].on('selected', this.lineButtonSelected.bind(this));
       this.lineButtons[i].on('unselected', this.lineButtonUnselected.bind(this));
     }
     this.hideLineButtons();
 
     this.toggleMetro = function() {
+      this.showLateralMenu();
       if (this.cityVisible) {
         this.showMetro();
       } else {
         this.hideMetro();
       }
-    },
+    };
+
     this.showMetro = function() {
       this.cityVisible = false;
       this.showLineButtons();
       this.city.setTransparentBuildings();
-    },
+    };
+
     this.hideMetro = function() {
       this.cityVisible = true;
       this.hideLineButtons();
       this.city.setOpaqueBuildings();
-    }
+    };
 
     this.showWarning = function(text, time) {
       time = time || 2000;
@@ -226,17 +244,19 @@ window.moletube.currentStage = new pixEngine.Stage({
         strokeThickness: 3,
         stroke: "#000000"
       });
-      this.warningText.viewType = "text"
+      this.warningText.viewType = "text";
       this.warningText.y = 10;
       this.warningText.x = 500;
       this.addVisualEntity(this.warningText);
       this.warningText.interval = setTimeout(this.removeWarning.bind(this), time);
-    }
+    };
+
     this.removeWarning = function() {
       clearTimeout(this.warningText.interval);
       this.pixiStage.removeChild(this.warningText);
       this.warningText = null;
-    }
+    };
+
     this.metroButton.on('clicked', this.toggleMetro.bind(this));
     this.city.on('warning', this.showWarning.bind(this));
     this.title = new moletube.models.Title({
@@ -248,6 +268,6 @@ window.moletube.currentStage = new pixEngine.Stage({
 
   },
 
-})
+});
 
-window.moletube.currentStage.init()
+window.moletube.currentStage.init();
