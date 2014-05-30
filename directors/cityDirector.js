@@ -163,7 +163,6 @@ window.moletube.currentStage = new pixEngine.Stage({
       y: 0
     });
 
-    this.lineButtons = [];
 
     this.showLateralMenu = function() {
       if (self.lateralMenu) {
@@ -197,18 +196,6 @@ window.moletube.currentStage = new pixEngine.Stage({
 
     };
 
-    for (var i in self.city.lines) {
-      self.lineButtons.push(new moletube.models.LineButton({
-        line: this.city.lines[i].lineData.line,
-        stage: this,
-        color: this.city.lines[i].lineData.color
-      }));
-    }
-    for (i in this.lineButtons) {
-      this.lineButtons[i].on('selected', this.lineButtonSelected.bind(this));
-      this.lineButtons[i].on('unselected', this.lineButtonUnselected.bind(this));
-    }
-    this.hideLineButtons();
 
     this.toggleMetro = function() {
       this.showLateralMenu();
@@ -220,15 +207,15 @@ window.moletube.currentStage = new pixEngine.Stage({
     };
 
     this.showMetro = function() {
-      this.cityVisible = false;
-      this.showLineButtons();
-      this.city.setTransparentBuildings();
+      // this.cityVisible = false;
+      // this.showLineButtons();
+      // this.city.setTransparentBuildings();
     };
 
     this.hideMetro = function() {
-      this.cityVisible = true;
-      this.hideLineButtons();
-      this.city.setOpaqueBuildings();
+      // this.cityVisible = true;
+      // this.hideLineButtons();
+      // this.city.setOpaqueBuildings();
     };
 
     this.showWarning = function(text, time) {
