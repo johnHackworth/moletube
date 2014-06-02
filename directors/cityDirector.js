@@ -141,6 +141,14 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/thoughts/fun.png',
     'assets/thoughts/work.png',
     'assets/thoughts/home.png',
+    'assets/decoration/tree1.png',
+    'assets/decoration/tree2.png',
+    'assets/decoration/tree3.png',
+    'assets/decoration/tree4.png',
+    'assets/decoration/tree5.png',
+    'assets/decoration/tree6.png',
+    'assets/decoration/tree7.png',
+    'assets/decoration/tree8.png'
   ],
   init: function(stage) {
     var self = this;
