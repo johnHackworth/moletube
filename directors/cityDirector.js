@@ -148,7 +148,8 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/decoration/tree5.png',
     'assets/decoration/tree6.png',
     'assets/decoration/tree7.png',
-    'assets/decoration/tree8.png'
+    'assets/decoration/tree8.png',
+    'assets/tolls.png'
   ],
   init: function(stage) {
     var self = this;
@@ -169,6 +170,10 @@ window.moletube.currentStage = new pixEngine.Stage({
       stage: this,
       x: 1000,
       y: 0
+    });
+
+    this.tradeCouncil = new moletube.models.TradeCouncil({
+      stage: this
     });
 
 
@@ -256,6 +261,9 @@ window.moletube.currentStage = new pixEngine.Stage({
       stage: moletube.currentStage,
       profiled: moletube.currentStage.city.moles[0]
     });
+
+    window.stage = this;
+    window.city = this.city;
 
     document.getElementById('loader').remove();
 
