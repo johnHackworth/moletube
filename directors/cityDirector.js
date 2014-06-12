@@ -151,11 +151,13 @@ window.moletube.currentStage = new pixEngine.Stage({
       stage: this
     });
     this.engine.addEntity(this.world);
+    this.overlayManager = new moletube.models.OverlayManager();
     this.city = new moletube.models.City({
       x: 600,
       y: moletube.config.height / 2,
       stage: this,
-      world: this.world
+      world: this.world,
+      overlayManager: this.overlayManager
     });
     this.engine.addEntity(this.city);
     this.city.drawCity();
@@ -171,13 +173,12 @@ window.moletube.currentStage = new pixEngine.Stage({
 
 
     this.showLateralMenu = function() {
-      if (self.lateralMenu) {
-        self.lateralMenu.destroy();
-      }
+      self.overlayManager.clean();
       self.resaltTiles = true;
-      self.lateralMenu = new moletube.models.LateralMenu({
+      var lateralMenu = new moletube.models.LateralMenu({
         stage: this
       });
+      self.overlayManager.addLayer(lateralMenu);
     };
 
     this.lineButtonSelected = function(lineButton) {
@@ -248,7 +249,7 @@ window.moletube.currentStage = new pixEngine.Stage({
       this.warningText = null;
     };
 
-    this.metroButton.on('clicked', this.toggleMetro.bind(this));
+    this.metroButton.on('clicked', this.showLateralMenu.bind(this));
     this.city.on('warning', this.showWarning.bind(this));
     this.title = new moletube.models.Title({
       stage: moletube.currentStage,
