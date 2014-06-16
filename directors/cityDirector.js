@@ -70,8 +70,8 @@ window.moletube.currentStage = new pixEngine.Stage({
     'assets/mole8_2.png',
     'assets/mole8_1b.png',
     'assets/mole8_2b.png',
-    'assets/metroButton.png',
-    'assets/metroButtonHover.png',
+    'assets/buttons/buy.png',
+    'assets/buttons/build.png',
     'assets/metroStation.png',
     'assets/recordStore.png',
     'assets/factory1.png',
@@ -151,7 +151,9 @@ window.moletube.currentStage = new pixEngine.Stage({
       stage: this
     });
     this.engine.addEntity(this.world);
-    this.overlayManager = new moletube.models.OverlayManager();
+    this.overlayManager = new moletube.models.OverlayManager({
+      stage: this
+    });
     this.city = new moletube.models.City({
       x: 600,
       y: moletube.config.height / 2,
@@ -161,69 +163,13 @@ window.moletube.currentStage = new pixEngine.Stage({
     });
     this.engine.addEntity(this.city);
     this.city.drawCity();
-    this.metroButton = new moletube.models.MetroButton({
+    this.uiManager = new moletube.models.UIManager({
       stage: this,
-      x: 1000,
-      y: 0
+      overlayManager: this.overlayManager
     });
-
     this.tradeCouncil = new moletube.models.TradeCouncil({
       stage: this
     });
-
-
-    this.showLateralMenu = function() {
-      self.overlayManager.clean();
-      self.resaltTiles = true;
-      var lateralMenu = new moletube.models.LateralMenu({
-        stage: this
-      });
-      self.overlayManager.addLayer(lateralMenu);
-    };
-
-    this.lineButtonSelected = function(lineButton) {
-      self.city.unselectLine();
-      for (var i in self.lineButtons) {
-        if (lineButton != self.lineButtons[i]) {
-          self.lineButtons[i].deselect();
-        }
-      }
-      self.city.selectLine(lineButton);
-    };
-
-    this.lineButtonUnselected = function() {
-      self.city.unselectLine();
-    };
-
-    this.showLineButtons = function(lineButton) {
-
-    };
-
-    this.hideLineButtons = function(lineButton) {
-
-    };
-
-
-    this.toggleMetro = function() {
-      this.showLateralMenu();
-      // if (this.cityVisible) {
-      //   this.showMetro();
-      // } else {
-      //   this.hideMetro();
-      // }
-    };
-
-    this.showMetro = function() {
-      // this.cityVisible = false;
-      // this.showLineButtons();
-      // this.city.setTransparentBuildings();
-    };
-
-    this.hideMetro = function() {
-      // this.cityVisible = true;
-      // this.hideLineButtons();
-      // this.city.setOpaqueBuildings();
-    };
 
     this.showWarning = function(text, time) {
       time = time || 2000;
@@ -249,7 +195,6 @@ window.moletube.currentStage = new pixEngine.Stage({
       this.warningText = null;
     };
 
-    this.metroButton.on('clicked', this.showLateralMenu.bind(this));
     this.city.on('warning', this.showWarning.bind(this));
     this.title = new moletube.models.Title({
       stage: moletube.currentStage,

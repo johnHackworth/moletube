@@ -7,7 +7,7 @@
     "icon": "assets/breakingMole.png",
     "toolbar": false,
     "frame": true,
-    "fullscreen": true,
+    "fullscreen": false,
     "width": 1200,
     "height": 800,
     "position": "mouse",
