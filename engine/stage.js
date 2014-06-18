@@ -10,7 +10,7 @@ pixEngine.Stage = function(options) {
       return false;
     }
     return true;
-  }
+  };
   var self = this;
   pixEngine.utils.extend.call(this, pixEngine.utils.Eventable);
   // this.pixiStage = new PIXI.Stage(0x67EBA1, true);
@@ -33,8 +33,8 @@ pixEngine.Stage = function(options) {
     this.mouse = new pixEngine.Mouse(options.width, options.height, this);
     this.mouse.on('click', function(mousedata) {
       self.engine.running = true;
-      self.trigger('click', mousedata)
-    })
+      self.trigger('click', mousedata);
+    });
     this.initStage = options.init;
     // console.log(pixEngine.Viewport)
     this.viewport = new pixEngine.Viewport({
@@ -46,14 +46,14 @@ pixEngine.Stage = function(options) {
       height: options.height,
       x: Math.floor(options.width / 2),
       y: Math.floor(options.height / 2)
-    })
+    });
   } else {
     var loader = document.getElementById('loader');
     loader.innerHTML = 'Your browser doesn\'t support webGL, sorry';
     loader.setAttribute('class', 'warning');
     this.init = function() {};
   }
-}
+};
 
 pixEngine.Stage.prototype.init = function() {
   var self = this;
@@ -63,30 +63,30 @@ pixEngine.Stage.prototype.init = function() {
   this.loader.onComplete = function() {
     self.initStage(self);
     self.engine.gameloop();
-  }
+  };
   this.loader.load();
-}
+};
 
 pixEngine.Stage.prototype.tick = function(counter) {
   this.viewport.tick(counter);
-}
+};
 
 pixEngine.Stage.prototype.addEntity = function(entity) {
   this.pixiStage.addChild(entity.view);
   this.engine.addEntity(entity);
-}
+};
 
 pixEngine.Stage.prototype.addVisualEntity = function(entity) {
   this.pixiStage.addChild(entity);
-}
+};
 
 pixEngine.Stage.prototype.addNotVisualEntity = function(entity) {
   this.engine.addEntity(entity);
-}
+};
 
 pixEngine.Stage.prototype.removeView = function(entity) {
   this.pixiStage.removeChild(entity);
-}
+};
 
 pixEngine.Stage.prototype.addViewAfter = function(entity, afterEntity) {
   this.pixiStage.addChild(entity);
@@ -95,7 +95,7 @@ pixEngine.Stage.prototype.addViewAfter = function(entity, afterEntity) {
     var pixiEntity = this.pixiStage.children.pop();
     this.pixiStage.children.splice(i + 1, 0, pixiEntity);
   }
-}
+};
 
 pixEngine.Stage.prototype.resetPixiView = function(condition, value) {
   var removables = [];
@@ -107,7 +107,7 @@ pixEngine.Stage.prototype.resetPixiView = function(condition, value) {
   for (var j in removables) {
     this.pixiStage.removeChild(removables[j]);
   }
-}
+};
 
 pixEngine.Stage.prototype.toFrontPixiView = function(condition, value) {
   var removables = [];
@@ -120,4 +120,74 @@ pixEngine.Stage.prototype.toFrontPixiView = function(condition, value) {
     this.pixiStage.removeChild(removables[j]);
     this.pixiStage.addChild(removables[j]);
   }
-}
+};
+
+pixEngine.Stage.prototype.addText = function(text, options, destroyables) {
+  fontSize = options.fontSize || '30px';
+  color = options.color || '#333333';
+  x = options.x || 0;
+  y = options.y || 0;
+  centered = options.centered || 0;
+  var textView = new PIXI.Text(text, {
+    font: fontSize + " Verdana",
+    fill: color
+  });
+  textView.x = x;
+  if (centered) {
+    textView.x -= textView.width / 2;
+  }
+  textView.y = y;
+  textView.viewType = 'text';
+  this.addVisualEntity(textView);
+  if (destroyables) {
+    destroyables.push(textView);
+  }
+  return textView;
+};
+
+pixEngine.Stage.prototype.addImage = function(image, options, destroyables) {
+  x = options.x || 0;
+  y = options.y || 0;
+  scale = options.scale || 1;
+  centered = options.centered || false;
+  var picture = new PIXI.Sprite.fromImage(image);
+  picture.x = x;
+  if (centered) {
+    picture.x -= picture.width * scale / 2;
+  }
+  picture.y = y;
+  picture.scale.set(scale);
+  picture.viewType = 'text';
+  this.addVisualEntity(picture);
+  if (destroyables) {
+    destroyables.push(picture);
+  }
+  return picture;
+};
+
+pixEngine.Stage.prototype.addBackground = function(x, y, width, height, color, opacity, destroyables) {
+  x = x || 0;
+  y = y || 0;
+  width = width || 500;
+  height = height || 500;
+  color = color || 0xD2F47A;
+  opacity = opacity || 0.5;
+  background = new PIXI.Graphics();
+  background.clear();
+  background.beginFill(color);
+
+  background.moveTo(x, y);
+  background.lineTo(x + width, y);
+  background.lineTo(x + width, y + height);
+  background.lineTo(x, y + height);
+  background.lineTo(x, y);
+  background.endFill();
+  background.alpha = opacity;
+  background.viewType = 'text';
+  this.addVisualEntity(background);
+  if (destroyables) {
+    destroyables.push(background);
+  }
+
+  return background;
+};
