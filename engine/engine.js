@@ -7,7 +7,7 @@ pixEngine.Engine = function(options) {
   this.stage = options.stage
 }
 
-pixEngine.Engine.prototype.speed = 1;
+pixEngine.Engine.prototype.speed = 6;
 
 pixEngine.Engine.prototype.gameloop = function() {
   requestAnimFrame(this.gameloop.bind(this));

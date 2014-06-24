@@ -42,7 +42,9 @@ pixEngine.Viewport.prototype = {
   },
   hideIfNotInViewPort: function(entity) {
     if (this.isInsideViewPort(entity)) {
-      entity.visible = true;
+      if (!entity.hidden) {
+        entity.visible = true;
+      }
     } else {
       entity.visible = false;
     }
