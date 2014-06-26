@@ -76,6 +76,11 @@ pixEngine.Stage.prototype.addEntity = function(entity) {
   this.engine.addEntity(entity);
 };
 
+pixEngine.Stage.prototype.removeEntity = function(entity) {
+  this.removeView(entity.view);
+  this.engine.removeEntity(entity);
+};
+
 pixEngine.Stage.prototype.addVisualEntity = function(entity) {
   this.pixiStage.addChild(entity);
 };
