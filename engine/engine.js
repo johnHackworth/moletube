@@ -39,3 +39,10 @@ pixEngine.Engine.prototype.searchEntity = function(entity) {
   }
   return -1;
 }
+
+pixEngine.Engine.prototype.removeEntity = function(entity) {
+  var n = this.searchEntity(entity);
+  if (n >= 0) {
+    this.entities.splice(n, 1);
+  }
+}

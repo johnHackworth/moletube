@@ -36,8 +36,11 @@ pixEngine.Stage = function(options) {
       self.trigger('click', mousedata);
     });
     this.initStage = options.init;
-    // console.log(pixEngine.Viewport)
+
+    this.keyManager = new pixEngine.utils.Keyboard();
+
     this.viewport = new pixEngine.Viewport({
+      keyManager: this.keyManager,
       maxX: options.maxX || options.width,
       maxY: options.maxY || options.height,
       minX: options.minX || 0,
@@ -55,6 +58,7 @@ pixEngine.Stage = function(options) {
   }
 };
 
+pixEngine.Stage.prototype.baseEntityNumber = 0;
 pixEngine.Stage.prototype.init = function() {
   var self = this;
   document.body.appendChild(this.renderer.view);
@@ -76,6 +80,11 @@ pixEngine.Stage.prototype.addEntity = function(entity) {
   this.engine.addEntity(entity);
 };
 
+pixEngine.Stage.prototype.removeEntity = function(entity) {
+  this.removeView(entity.view);
+  this.engine.removeEntity(entity);
+};
+
 pixEngine.Stage.prototype.addVisualEntity = function(entity) {
   this.pixiStage.addChild(entity);
 };
@@ -91,6 +100,7 @@ pixEngine.Stage.prototype.removeView = function(entity) {
 pixEngine.Stage.prototype.addViewAfter = function(entity, afterEntity) {
   this.pixiStage.addChild(entity);
   var i = this.pixiStage.children.indexOf(afterEntity);
+  i = i > this.baseEntityNumber ? i : this.baseEntityNumber;
   if (i >= 0) {
     var pixiEntity = this.pixiStage.children.pop();
     this.pixiStage.children.splice(i + 1, 0, pixiEntity);
