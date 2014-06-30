@@ -6,12 +6,14 @@ pixEngine.Viewport = function(options) {
   this.minY = options.minY;
   this.width = options.width;
   this.height = options.height;
+  this.keyManager = options.keyManager;
   this.x = options.x || 0;
   this.y = options.y || 0;
   this.mouseTrack = options.mouseTrack;
   this.target = [this.x, this.y];
-}
+};
 pixEngine.Viewport.prototype = {
+  _KEY_DISPLACEMENT: 10,
   getX: function(x) {
     return -1 * this.x + x + Math.floor(this.width / 2);
   },
@@ -50,9 +52,11 @@ pixEngine.Viewport.prototype = {
     }
   },
   tick: function() {
+    var difference = null;
+    this.manageKeyPress();
     if (this.target[0] != this.x) {
       var orientationX = Math.abs(this.target[0] - this.x) / (this.target[0] - this.x);
-      var difference = Math.abs(this.x - this.target[0]);
+      difference = Math.abs(this.x - this.target[0]);
       if (difference > this.panAmount) {
         difference = this.panAmount;
       }
@@ -84,5 +88,24 @@ pixEngine.Viewport.prototype = {
     var panY = centerY - data.y;
 
     this.panTo(this.target[0] - panX, this.target[1] - panY, 5);
+  },
+  manageKeyPress: function() {
+    if (this.keyManager.isCharacterPressed('a') ||
+      this.keyManager.isPressed(this.keyManager.LEFT_CURSOR)
+    ) {
+      this.target[0] -= this._KEY_DISPLACEMENT;
+    }
+    if (this.keyManager.isCharacterPressed('d') ||
+      this.keyManager.isPressed(this.keyManager.RIGHT_CURSOR)) {
+      this.target[0] += this._KEY_DISPLACEMENT;
+    }
+    if (this.keyManager.isCharacterPressed('w') ||
+      this.keyManager.isPressed(this.keyManager.UP_CURSOR)) {
+      this.target[1] -= this._KEY_DISPLACEMENT;
+    }
+    if (this.keyManager.isCharacterPressed('s') ||
+      this.keyManager.isPressed(this.keyManager.DOWN_CURSOR)) {
+      this.target[1] += this._KEY_DISPLACEMENT;
+    }
   }
-}
+};
