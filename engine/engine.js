@@ -16,11 +16,12 @@ pixEngine.Engine.prototype.gameloop = function() {
     this.internalCounter++;
     if (this.internalCounter % this.speed === 0) {
       this.counter++;
-      this.stage.tick(this.counter);
-      for (var i in this.entities) {
-        this.entities[i].tick(this.counter);
-      }
     }
+    this.stage.tick(this.counter);
+    for (var i in this.entities) {
+      this.entities[i].tick(this.counter, this.internalCounter % this.speed === 0);
+    }
+
   }
   this.renderer.render(this.stage.pixiStage);
 }
